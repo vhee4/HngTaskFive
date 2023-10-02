@@ -46,6 +46,11 @@
 			<version>1.12.560</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/aws.sdk.kotlin/aws-core-jvm -->
