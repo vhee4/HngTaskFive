@@ -52,7 +52,8 @@ public class VideoServiceImpl implements VideoService {
 
         long partSize = 5 * 1024 * 1024;
 
-        Video video = null;
+        List<PartETag> partETags = new ArrayList<>(); // Create a list for PartETags
+
         try (InputStream input = multipartFile.getInputStream()) {
             byte[] buffer = new byte[(int) partSize];
             int bytesRead;
@@ -71,29 +72,31 @@ public class VideoServiceImpl implements VideoService {
 
                 String eTag = uploadPartResponse.getETag();
 
+                partETags.add(new PartETag(partNumber, eTag)); // Add PartETag for this part
+
                 partNumber++;
-
-                List<PartETag> partETags = new ArrayList<>();
-
-                CompleteMultipartUploadRequest completeRequest = new CompleteMultipartUploadRequest()
-                        .withBucketName(bucketName)
-                        .withKey(objectKey)
-                        .withUploadId(uploadId)
-                        .withPartETags(partETags);
-
-                CompleteMultipartUploadResult completeResponse = s3Client.completeMultipartUpload(completeRequest);
-
-                video = Video.builder()
-                        .fileSize(multipartFile.getSize())
-                        .fileUrl(objectUrl)
-                        .fileName(objectKey)
-                        .build();
-                videoRepository.save(video);
             }
         }
-        assert video != null;
+
+        CompleteMultipartUploadRequest completeRequest = new CompleteMultipartUploadRequest()
+                .withBucketName(bucketName)
+                .withKey(objectKey)
+                .withUploadId(uploadId)
+                .withPartETags(partETags); // Set the list of PartETags
+
+        CompleteMultipartUploadResult completeResponse = s3Client.completeMultipartUpload(completeRequest);
+
+        // Create the Video object and save it
+        Video video = Video.builder()
+                .fileSize(multipartFile.getSize())
+                .fileUrl(objectUrl)
+                .fileName(objectKey)
+                .build();
+        videoRepository.save(video);
+
         return mapVideoToVideoResponse(video);
     }
+
 
     @Override
     public VideoResponse getVideoById(Long id) {
