@@ -1,0 +1,18 @@
+#cloud:
+#  aws:
+#    credentials:
+#      access-key: AKIAZMPD2F7Q7IM6SHDS
+#      secret-key: 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
+#    region:
+#      static: eu-west-2
+#    stack:
+#      auto: false
+#
+#application:
+#  bucket:
+#    name: hngvideostorage
+#
+##spring: <1 key>
+#
+#server:
+#  port: 9090
