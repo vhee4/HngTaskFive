@@ -1,0 +1,17 @@
+com\HngTaskFive\HngTaskFive\controller\VideoController.class
+com\HngTaskFive\HngTaskFive\HngTaskFiveApplication$1.class
+com\HngTaskFive\HngTaskFive\data\repositories\VideoRepository.class
+com\HngTaskFive\HngTaskFive\config\AwsConfig.class
+com\HngTaskFive\HngTaskFive\data\entity\Video.class
+com\HngTaskFive\HngTaskFive\data\dto\response\VideoResponse.class
+com\HngTaskFive\HngTaskFive\data\dto\response\VideoResponse$VideoResponseBuilder.class
+com\HngTaskFive\HngTaskFive\data\dto\payload\VideoRequestDto.class
+com\HngTaskFive\HngTaskFive\service\VideoService.class
+com\HngTaskFive\HngTaskFive\data\entity\Video$VideoBuilder.class
+com\HngTaskFive\HngTaskFive\data\dto\response\ApiResponse.class
+com\HngTaskFive\HngTaskFive\service\VideoServiceImpl.class
+com\HngTaskFive\HngTaskFive\HngTaskFiveApplication.class
+com\HngTaskFive\HngTaskFive\exceptions\NotFoundException.class
+com\HngTaskFive\HngTaskFive\data\dto\payload\VideoRequestDto$VideoRequestDtoBuilder.class
+com\HngTaskFive\HngTaskFive\data\dto\response\ApiResponse$ApiResponseBuilder.class
+com\HngTaskFive\HngTaskFive\data\entity\AuditModel.class
